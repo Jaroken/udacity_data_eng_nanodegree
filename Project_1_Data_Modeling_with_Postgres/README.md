@@ -49,8 +49,10 @@ More specifically here are the main steps:
 *   The last step is to now extract the data fro the songplay table. This is a bit more tricky as we need to extract all the data from the log data we need along with the song id and artist id from the song data processed earlier.
 *   To allow this we first query the songs and artists table matching by song title, artist name, and song duration that we have in the log file to get the correct artist and song ids from song and artist table we created earlier. We upload this data (along with the start_time timestamp, user id, level, session id, location, and user agent) to the songplay table.
 
+
     3. [Optional] Provide example queries and results for song play analysis.
     
+
 ### Example Query
 
 ##### Example 1: Query by day of week
