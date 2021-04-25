@@ -6,6 +6,15 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    This procedure processes a song file whose filepath has been provided as an arugment.
+    It extracts the song information in order to store it into the songs table.
+    Then it extracts the artist information in order to store it into the artists table.
+
+    INPUTS: 
+    * cur the cursor variable
+    * filepath the file path to the song file
+    """
     # open song file
     df = pd.DataFrame(pd.read_json(filepath,   typ='series')).transpose()
 
@@ -18,6 +27,16 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    This procedure processes a log file whose filepath has been provided as an arugment.
+    It extracts the log information in order to store it into the time and user table.
+    Then it extracts the artist and song id from the song data and combines it with log 
+    variables to update the songplays table.
+
+    INPUTS: 
+    * cur the cursor variable
+    * filepath the file path to the song file
+    """
     # open log file
     df = pd.DataFrame(pd.read_json(filepath, lines=True))
 
@@ -61,6 +80,15 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    """
+    This function finds all the files in the specified 
+    filepath provided and runs this process through the 
+    provided function to update the sparkify database
+    * cur the cursor variable
+    * conn the connection
+    * filepath the file path being processed
+    * the function to run
+    """
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
